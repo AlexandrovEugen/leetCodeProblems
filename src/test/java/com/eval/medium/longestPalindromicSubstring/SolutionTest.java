@@ -1,4 +1,4 @@
-package com.eval.longestPalindromicSubstring;
+package com.eval.medium.longestPalindromicSubstring;
 
 import lombok.val;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ class SolutionTest {
     @Test
     void test1() {
         val input = "babad";
-        val expectedOutput = "bab";
+        val expectedOutput = "aba";
         val actualOutput = solution.longestPalindrome(input);
         assertThat(actualOutput).isEqualTo(expectedOutput);
     }

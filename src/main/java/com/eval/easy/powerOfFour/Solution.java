@@ -1,4 +1,4 @@
-package com.eval.powerOfFour;
+package com.eval.easy.powerOfFour;
 
 public class Solution {
 

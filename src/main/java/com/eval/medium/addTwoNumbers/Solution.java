@@ -1,4 +1,4 @@
-package com.eval.addTwoNumbers;
+package com.eval.medium.addTwoNumbers;
 
 
 public class Solution {

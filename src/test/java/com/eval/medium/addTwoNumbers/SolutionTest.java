@@ -1,7 +1,5 @@
-package com.eval.addTwoNumbers;
+package com.eval.medium.addTwoNumbers;
 
-import com.eval.addTwoNumbers.ListNode;
-import com.eval.addTwoNumbers.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,7 +9,7 @@ class SolutionTest {
     private final Solution solution = new Solution();
 
     @Test
-    void test1(){
+    void test1() {
         ListNode l1 = new ListNode(0);
         ListNode l2 = new ListNode(0);
         ListNode expectedList = new ListNode(0);
@@ -22,7 +20,7 @@ class SolutionTest {
     }
 
     @Test
-    void test2(){
+    void test2() {
         ListNode l11 = new ListNode(3);
         ListNode l12 = new ListNode(4, l11);
         ListNode l13 = new ListNode(2, l12);
@@ -43,7 +41,7 @@ class SolutionTest {
 
 
     @Test
-    void test3(){
+    void test3() {
         ListNode l11 = new ListNode(9);
 
 
@@ -52,7 +50,7 @@ class SolutionTest {
         ListNode l23 = new ListNode(9, l22);
         ListNode l24 = new ListNode(9, l23);
         ListNode l25 = new ListNode(9, l24);
-        ListNode l26 = new ListNode(9,l25);
+        ListNode l26 = new ListNode(9, l25);
         ListNode l27 = new ListNode(9, l26);
         ListNode l28 = new ListNode(9, l27);
         ListNode l29 = new ListNode(9, l28);
@@ -67,7 +65,7 @@ class SolutionTest {
         ListNode l33 = new ListNode(0, l32);
         ListNode l34 = new ListNode(0, l33);
         ListNode l35 = new ListNode(0, l34);
-        ListNode l36 = new ListNode(0,l35);
+        ListNode l36 = new ListNode(0, l35);
         ListNode l37 = new ListNode(0, l36);
         ListNode l38 = new ListNode(0, l37);
         ListNode l39 = new ListNode(0, l38);

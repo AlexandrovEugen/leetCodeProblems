@@ -1,6 +1,5 @@
-package com.eval.longestSubstringWithoutRepeatingCharacters;
+package com.eval.medium.longestSubstringWithoutRepeatingCharacters;
 
-import lombok.val;
 import java.util.Arrays;
 
 public class Solution {
@@ -54,7 +53,7 @@ public class Solution {
             if (!tmp.toString().contains(String.valueOf(c))) {
                 tmp.append(c);
             } else {
-                if (max.length() < tmp.length()){
+                if (max.length() < tmp.length()) {
                     max = tmp.toString();
                 }
                 var i = tmp.indexOf(String.valueOf(c));
@@ -73,7 +72,7 @@ public class Solution {
 
         // last index of all characters is initialized
         // as -1
-        int [] lastIndex = new int[NO_OF_CHARS];
+        int[] lastIndex = new int[NO_OF_CHARS];
         Arrays.fill(lastIndex, -1);
 
         // Initialize start of current window

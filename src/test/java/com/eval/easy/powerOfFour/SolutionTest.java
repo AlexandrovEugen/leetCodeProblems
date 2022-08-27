@@ -1,6 +1,5 @@
-package com.eval.powerOfFour;
+package com.eval.easy.powerOfFour;
 
-import com.eval.powerOfFour.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,7 +12,7 @@ class SolutionTest {
 
 
     @Test
-    void test1(){
+    void test1() {
         assertTrue(solution.isPowerOfFour(4));
         assertFalse(solution.isPowerOfFour(25));
         assertTrue(solution.isPowerOfFour(16));
