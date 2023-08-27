@@ -1,11 +1,19 @@
 package com.eval.hard.frogJump;
 
 
+/**
+ *
+ *  The solution is to recursively go through the all possible ways to pass the river.
+ *  To avoid calculation of already visited cases visited graph is used for.
+ *
+ *
+ */
 public class Solution {
 
     boolean[][] visitedGraph;
 
     public boolean canCross(int[] stones) {
+        if (stones[1] != 1) return false;
         var n = stones.length;
         visitedGraph = new boolean[n][n];
         return recursiveProcessing(stones, 0, 1);
@@ -13,7 +21,6 @@ public class Solution {
 
     private boolean recursiveProcessing(int[] stones, int lastIndex, int currIndex) {
         if (currIndex == stones.length - 1) return true;
-
         if (visitedGraph[lastIndex][currIndex]) return false;
 
         var lastJump = stones[currIndex] - stones[lastIndex];
