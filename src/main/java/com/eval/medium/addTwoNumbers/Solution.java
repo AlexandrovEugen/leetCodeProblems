@@ -11,11 +11,11 @@ public class Solution {
 
         while (l1 != null || l2 != null || sum !=0){
             if (l1 != null){
-                sum = sum + l1.getValue();
+                sum = sum + l1.getVal();
                 l1 = l1.getNext();
             }
             if (l2 != null){
-                sum = sum + l2.getValue();
+                sum = sum + l2.getVal();
                 l2 = l2.getNext();
             }
             opr.setNext(new ListNode(sum % 10));
@@ -48,7 +48,7 @@ public class Solution {
         boolean extra = false;
         while (l1 != null || l2 != null){
             if (l1 != null && l2 != null){
-                int sumOfDigits = l1.getValue() + l2.getValue();
+                int sumOfDigits = l1.getVal() + l2.getVal();
                 if (extra){
                     sumOfDigits +=1;
                 }
@@ -59,7 +59,7 @@ public class Solution {
                 inc++;
             }
             else if (l1 != null){
-                int digit = l1.getValue();
+                int digit = l1.getVal();
                 if (extra){
                     digit+=1;
                 }
@@ -69,7 +69,7 @@ public class Solution {
                 inc++;
             }
             else {
-                int digit = l2.getValue();
+                int digit = l2.getVal();
                 if (extra){
                     digit+=1;
                 }
@@ -99,7 +99,7 @@ public class Solution {
         long inc2 = 1;
         while (l1 != null || l2 != null) {
             if (l1 != null) {
-                int digit1 = l1.getValue();
+                int digit1 = l1.getVal();
                 l1 = l1.getNext();
                 first += digit1 * inc1;
                 if (l1 != null) {
@@ -107,7 +107,7 @@ public class Solution {
                 }
             }
             if (l2 != null) {
-                int digit2 = l2.getValue();
+                int digit2 = l2.getVal();
                 l2 = l2.getNext();
                 second += digit2 * inc2;
                 if (l2 != null) {

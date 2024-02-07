@@ -2,20 +2,22 @@ package com.eval.medium.addTwoNumbers;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 public class ListNode {
-    private int value;
-    private ListNode next;
+    public int val;
+    @ToString.Exclude
+    public ListNode next;
 
 
-    ListNode(int val) {
-        this.value = val;
+    public ListNode(int val) {
+        this.val = val;
     }
 
-    ListNode(int val, ListNode next) {
-        this.value = val;
+    public ListNode(int val, ListNode next) {
+        this.val = val;
         this.next = next;
     }
 
