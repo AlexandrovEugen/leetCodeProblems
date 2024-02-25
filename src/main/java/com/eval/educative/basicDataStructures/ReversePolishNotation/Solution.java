@@ -1,4 +1,4 @@
-package com.eval.educative.basicDataStructures.basicCalculator.ReversePolishNotation;
+package com.eval.educative.basicDataStructures.ReversePolishNotation;
 
 import java.util.Stack;
 

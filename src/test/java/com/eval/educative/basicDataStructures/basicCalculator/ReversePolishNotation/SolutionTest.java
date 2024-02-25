@@ -1,5 +1,6 @@
 package com.eval.educative.basicDataStructures.basicCalculator.ReversePolishNotation;
 
+import com.eval.educative.basicDataStructures.ReversePolishNotation.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
