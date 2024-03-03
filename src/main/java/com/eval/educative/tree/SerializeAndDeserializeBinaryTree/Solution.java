@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Stack;
 
 
-class Solution {
+public class Solution {
     // Initializing our marker as the max possible int value
     private static final String MARKER = "M";
     private static int m = 1;
