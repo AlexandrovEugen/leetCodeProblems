@@ -1,4 +1,4 @@
-package com.eval.educative.tree.MaximumDepthOfBinaryTree;
+package com.eval.educative.tree.dfs.MaximumDepthOfBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
 

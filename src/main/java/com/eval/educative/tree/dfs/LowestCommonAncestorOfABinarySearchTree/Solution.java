@@ -1,4 +1,4 @@
-package com.eval.educative.tree.LowestCommonAncestorOfABinarySearchTree;
+package com.eval.educative.tree.dfs.LowestCommonAncestorOfABinarySearchTree;
 
 import com.eval.educative.tree.TreeNode;
 

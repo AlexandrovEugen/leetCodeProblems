@@ -1,4 +1,4 @@
-package com.eval.educative.tree.SerializeAndDeserializeBinaryTree;
+package com.eval.educative.tree.dfs.SerializeAndDeserializeBinaryTree;
 
 
 import com.eval.educative.tree.TreeNode;

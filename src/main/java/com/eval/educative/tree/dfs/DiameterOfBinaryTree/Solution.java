@@ -1,4 +1,4 @@
-package com.eval.educative.tree.DiameterOfBinaryTree;
+package com.eval.educative.tree.dfs.DiameterOfBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
 

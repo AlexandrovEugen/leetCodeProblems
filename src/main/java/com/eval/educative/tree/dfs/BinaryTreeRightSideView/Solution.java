@@ -1,4 +1,4 @@
-package com.eval.educative.tree.BinaryTreeRightSideView;
+package com.eval.educative.tree.dfs.BinaryTreeRightSideView;
 
 import com.eval.educative.tree.TreeNode;
 

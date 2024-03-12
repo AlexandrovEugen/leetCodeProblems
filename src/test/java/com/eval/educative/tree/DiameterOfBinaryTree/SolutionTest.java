@@ -1,6 +1,7 @@
 package com.eval.educative.tree.DiameterOfBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
+import com.eval.educative.tree.dfs.DiameterOfBinaryTree.Solution;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

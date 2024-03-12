@@ -1,4 +1,4 @@
-package com.eval.educative.tree.BalancedBinaryTree;
+package com.eval.educative.tree.dfs.BalancedBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
 

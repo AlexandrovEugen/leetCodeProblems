@@ -2,6 +2,7 @@ package com.eval.educative.tree.LowestCommonAncestorOfABinarySearchTree;
 
 
 import com.eval.educative.tree.TreeNode;
+import com.eval.educative.tree.dfs.LowestCommonAncestorOfABinarySearchTree.Solution;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 

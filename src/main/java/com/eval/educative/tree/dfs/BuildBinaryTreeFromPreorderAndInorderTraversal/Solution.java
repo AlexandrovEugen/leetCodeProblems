@@ -1,4 +1,4 @@
-package com.eval.educative.tree.BuildBinaryTreeFromPreorderAndInorderTraversal;
+package com.eval.educative.tree.dfs.BuildBinaryTreeFromPreorderAndInorderTraversal;
 
 import com.eval.educative.tree.TreeNode;
 

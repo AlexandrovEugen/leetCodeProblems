@@ -1,6 +1,6 @@
 package com.eval.educative.minHeightTree;
 
-import com.eval.educative.tree.minHeightTree.Solution;
+import com.eval.educative.tree.dfs.minHeightTree.Solution;
 import org.junit.jupiter.api.Test;
 
 

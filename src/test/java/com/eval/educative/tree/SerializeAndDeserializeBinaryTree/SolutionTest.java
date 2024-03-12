@@ -1,6 +1,7 @@
 package com.eval.educative.tree.SerializeAndDeserializeBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
+import com.eval.educative.tree.dfs.SerializeAndDeserializeBinaryTree.Solution;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 

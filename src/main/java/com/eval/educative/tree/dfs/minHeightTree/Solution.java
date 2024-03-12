@@ -1,4 +1,4 @@
-package com.eval.educative.tree.minHeightTree;
+package com.eval.educative.tree.dfs.minHeightTree;
 
 import java.util.*;
 

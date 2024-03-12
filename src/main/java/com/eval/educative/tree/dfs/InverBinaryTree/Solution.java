@@ -1,4 +1,4 @@
-package com.eval.educative.tree.InverBinaryTree;
+package com.eval.educative.tree.dfs.InverBinaryTree;
 
 import com.eval.educative.tree.TreeNode;
 

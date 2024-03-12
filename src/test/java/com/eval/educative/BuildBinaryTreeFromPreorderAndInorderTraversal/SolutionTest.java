@@ -1,7 +1,7 @@
 package com.eval.educative.BuildBinaryTreeFromPreorderAndInorderTraversal;
 
 
-import com.eval.educative.tree.BuildBinaryTreeFromPreorderAndInorderTraversal.Solution;
+import com.eval.educative.tree.dfs.BuildBinaryTreeFromPreorderAndInorderTraversal.Solution;
 import com.eval.educative.tree.TreeNode;
 import org.junit.jupiter.api.Test;
 
