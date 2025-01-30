@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-public class Node {
+class Node {
     public final int val;
 
     public Node(int val) {
