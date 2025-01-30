@@ -2,7 +2,7 @@ package com.eval.year2025.medium.puzzle2658;
 
 import static java.lang.Math.max;
 
-public class Solution {
+class Solution {
     public int findMaxFish(int[][] grid) {
         int maxFish = 0;
         int[][] visited = new int[grid.length][grid[0].length];

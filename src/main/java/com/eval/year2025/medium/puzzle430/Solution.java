@@ -3,7 +3,7 @@ package com.eval.year2025.medium.puzzle430;
 
 import java.util.Stack;
 
-public class Solution {
+class Solution {
     public Node flatten(Node head) {
         if (head == null) return null;
         final Stack<Node> stack = new Stack<>();
