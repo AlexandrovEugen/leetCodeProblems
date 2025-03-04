@@ -1,28 +1,26 @@
 package com.eval.old.easy.linkedListCycle;
 
-import com.eval.old.medium.addTwoNumbers.ListNode;
 
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
+
 public class Solution {
     public boolean hasCycle(ListNode head) {
         if (head == null) return  false;
         ListNode slow = head;
-        ListNode fast = head.getNext();
+        ListNode fast = head.next;
 
-        while (fast != null && fast.getNext() !=null && slow !=null){
+        while (fast != null && fast.next != null && slow != null) {
             if (fast == slow) return true;
-            slow = slow.getNext();
-            fast =  fast.getNext().getNext();
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
 

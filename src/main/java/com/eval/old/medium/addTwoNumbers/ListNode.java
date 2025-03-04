@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-public class ListNode {
+class ListNode {
     public int val;
     @ToString.Exclude
     public ListNode next;

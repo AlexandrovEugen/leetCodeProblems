@@ -1,8 +1,6 @@
 package com.eval.old.medium.splitLinkedListinParts;
 
 
-import com.eval.old.medium.addTwoNumbers.ListNode;
-import com.eval.old.medium.splitLinkedListinParts.Solution;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
