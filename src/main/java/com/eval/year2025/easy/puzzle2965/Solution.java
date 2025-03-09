@@ -4,8 +4,33 @@ import java.util.TreeSet;
 
 class Solution {
 
-
     public int[] findMissingAndRepeatedValues(int[][] grid) {
+
+        long sum = 0;
+        long sqrSum = 0;
+        long n = grid.length;
+        long total = n * n;
+
+        for (int[] ints : grid) {
+            for (int anInt : ints) {
+                sum += anInt;
+                sqrSum += (long) anInt * anInt;
+            }
+        }
+
+        long sumDiff = sum - (total * (total + 1)) / 2;
+        long sqrDiff = sqrSum - (total * (total + 1) * (2 * total + 1)) / 6;
+
+
+        int missed = (int) (sqrDiff / sumDiff + sumDiff) / 2;
+        int duplicated = (int) (sqrDiff / sumDiff - sumDiff) / 2;
+
+        return new int[]{missed, duplicated};
+    }
+
+
+    @Deprecated
+    public int[] findMissingAndRepeatedValuesFromLeetCode(int[][] grid) {
         long sum = 0, sqrSum = 0;
         long n = grid.length;
         long total = n * n;
