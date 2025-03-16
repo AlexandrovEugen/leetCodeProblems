@@ -60,7 +60,7 @@ public class Solution {
         return opening.isEmpty() && isValid;
     }
 
-    public static boolean isValid(String s){
+    static boolean isValid(String s){
         Stack<Character> stack = new Stack<>(); // The stack to keep track of brackets
         HashMap<Character, Character> hashmap = new HashMap<>();
         hashmap.put(')', '(');
