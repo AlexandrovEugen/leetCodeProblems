@@ -6,55 +6,51 @@ import java.util.*;
 class Solution {
 
     public int countPaths(int n, int[][] roads) {
-        final Map<Integer, Set<VW>> adj = new HashMap<>();
+        List<List<int[]>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
         for (int[] road : roads) {
             int u = road[0];
             int v = road[1];
-            int w = road[2];
-            adj.computeIfPresent(u, (_, set) -> {
-                set.add(new VW(v, w));
-                return set;
-            });
-            adj.computeIfPresent(v, (_, set) -> {
-                set.add(new VW(u, w));
-                return set;
-            });
-            adj.computeIfAbsent(u, _ -> new HashSet<>()).add(new VW(v, w));
-            adj.computeIfAbsent(v, _ -> new HashSet<>()).add(new VW(u, w));
+            int time = road[2];
+            graph.get(u).add(new int[]{v, time});
+            graph.get(v).add(new int[]{u, time});
         }
 
-        final TreeSet<CostNode> minHeap = new TreeSet<>(Comparator.comparing(costNode -> costNode.w));
-        minHeap.add(new CostNode(0, 0));
+        long[] dist = new long[n];
+        int[] ways = new int[n];
+        Arrays.fill(dist, Long.MAX_VALUE);
+        dist[0] = 0;
+        ways[0] = 1;
 
-        int[] minCost = new int[n];
-        Arrays.fill(minCost, Integer.MAX_VALUE);
-        int[] pathCount = new int[n];
-        pathCount[0] = 1;
+        PriorityQueue<long[]> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a[0]));
+        pq.offer(new long[]{0, 0});
 
-        int MOD = 1000000007;
-        while (!minHeap.isEmpty()) {
-            CostNode costNode = minHeap.pollFirst();
-            int node = costNode.node();
-            int cost = costNode.w();
+        int MOD = 1_000_000_007;
 
-            for (VW vw : adj.get(node)) {
-                int nei = vw.v();
-                int nei_cost = vw.w();
-                if (cost + nei_cost < minCost[nei]) {
-                    minCost[nei] = cost + nei_cost;
-                    pathCount[nei] = pathCount[node];
-                    minHeap.add(new CostNode(nei_cost + cost, nei));
-                } else if (cost + nei_cost == minCost[nei]) {
-                    pathCount[nei] = (pathCount[nei] + pathCount[node]) % MOD;
-                }
+        while (!pq.isEmpty()) {
+            long[] curr = pq.poll();
+            long d = curr[0];
+            int node = (int) curr[1];
+
+            if (d > dist[node]) continue;
+
+            for (int[] neighbor : graph.get(node)) {
+                int nextNode = neighbor[0];
+                int time = neighbor[1];
+
+                if (dist[node] + time < dist[nextNode]) {
+                    dist[nextNode] = dist[node] + time;
+                    ways[nextNode] = ways[node];
+                    pq.offer(new long[]{dist[nextNode], nextNode});
+                } else if (dist[node] + time == dist[nextNode]) {
+                    ways[nextNode] = (ways[nextNode] + ways[node]) % MOD;
             }
         }
-        return pathCount[n - 1];
     }
 
-    private record VW(int v, int w) {
-    }
-
-    private record CostNode(int w, int node) {
+        return ways[n - 1];
     }
 }
