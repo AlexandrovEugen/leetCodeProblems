@@ -2,78 +2,109 @@ package com.eval.year2025.hard.puzzle2818;
 
 import java.util.*;
 
-
 class Solution {
+
+    final int MOD = 1000000007;
+
     public int maximumScore(List<Integer> nums, int k) {
-        final int MOD = 1_000_000_007;
-        final int N = nums.size();
+        int n = nums.size();
+        List<Integer> primeScores = new ArrayList<>(Collections.nCopies(n, 0));
 
-        final int[] primes = new int[N];
+        // Calculate the prime score for each number in nums
+        for (int index = 0; index < n; index++) {
+            int num = nums.get(index);
 
-        for (int i = 0; i < N; i++) {
-            int n = nums.get(i);
-            int score = 0;
-            for (int f = 2; f <= Math.sqrt(n); f++) {
-                if (n % f == 0) {
-                    score += 1;
-                    while (n % f == 0) {
-                        n /= f;
-                    }
+            // Check for prime factors from 2 to sqrt(n)
+            for (int factor = 2; factor <= Math.sqrt(num); factor++) {
+                if (num % factor == 0) {
+                    // Increment prime score for each prime factor
+                    primeScores.set(index, primeScores.get(index) + 1);
+
+                    // Remove all occurrences of the prime factor from num
+                    while (num % factor == 0) num /= factor;
                 }
             }
-            if (n >= 2) {
-                score += 1;
-            }
-            primes[i] = score;
+
+            // If num is still greater than or equal to 2, it's a prime factor
+            if (num >= 2) primeScores.set(index, primeScores.get(index) + 1);
         }
 
-        int[] right = new int[N];
-        Arrays.fill(right, N);
-        int[] left = new int[N];
-        Arrays.fill(left, -1);
+        // Initialize next and previous dominant index arrays
+        int[] nextDominant = new int[n];
+        int[] prevDominant = new int[n];
+        Arrays.fill(nextDominant, n);
+        Arrays.fill(prevDominant, -1);
 
-        Stack<Integer> stack = new Stack<>();
+        // Stack to store indices for monotonic decreasing prime score
+        Stack<Integer> decreasingPrimeScoreStack = new Stack<>();
 
-        for (int i = 0; i < primes.length; i++) {
-            while (!stack.isEmpty() && primes[stack.peek()] < primes[i]) {
-                Integer index = stack.pop();
-                right[index] = i;
+        // Calculate the next and previous dominant indices for each number
+        for (int index = 0; index < n; index++) {
+            // While the stack is not empty and the current prime score is greater than the stack's top
+            while (
+                    !decreasingPrimeScoreStack.isEmpty() &&
+                            primeScores.get(decreasingPrimeScoreStack.peek()) <
+                                    primeScores.get(index)
+            ) {
+                int topIndex = decreasingPrimeScoreStack.pop();
+
+                // Set the next dominant element for the popped index
+                nextDominant[topIndex] = index;
             }
-            if (!stack.isEmpty()) {
-                left[i] = stack.peek();
-            }
-            stack.push(i);
+
+            // If the stack is not empty, set the previous dominant element for the current index
+            if (!decreasingPrimeScoreStack.isEmpty()) prevDominant[index] =
+                    decreasingPrimeScoreStack.peek();
+
+            // Push the current index onto the stack
+            decreasingPrimeScoreStack.push(index);
         }
 
-        int[][] minHeap = new int[N][2];
-        for (int i = 0; i < N; i++) {
-            minHeap[i][0] = nums.get(i);
-            minHeap[i][1] = i;
+        // Calculate the number of subarrays in which each element is dominant
+        long[] numOfSubarrays = new long[n];
+        for (int index = 0; index < n; index++) {
+            numOfSubarrays[index] =
+                    ((long) nextDominant[index] - index) *
+                            (index - prevDominant[index]);
         }
-        Arrays.sort(minHeap, Comparator.comparing(a -> a[0]));
 
-        int i = N - 1;
-        long product = 1;
+        // Priority queue to process elements in decreasing order of their value
+        PriorityQueue<int[]> processingQueue = new PriorityQueue<>((a, b) -> {
+            if (b[0] == a[0]) {
+                return Integer.compare(a[1], b[1]); // break tie based on the index (ascending order)
+            }
+            return Integer.compare(b[0], a[0]); // descending order for the value
+        });
+
+        // Push each number and its index onto the priority queue
+        for (int index = 0; index < n; index++) {
+            processingQueue.offer(new int[] { nums.get(index), index });
+        }
+
+        long score = 1;
+
+        // Process elements while there are operations left
         while (k > 0) {
-            int index = minHeap[i][1];
-            int number = minHeap[i][0];
+            // Get the element with the maximum value from the queue
+            int[] top = processingQueue.poll();
+            int num = top[0];
+            int index = top[1];
 
-            int score = primes[index];
-            int leftCount = index - left[index];
-            int rightCount = right[index] - index;
+            // Calculate the number of operations to apply on the current element
+            long operations = Math.min((long) k, numOfSubarrays[index]);
 
-            int count = leftCount * rightCount;
-            int operation = Math.min(k, count);
-            k -= operation;
-            product = (product * power(number, operation, MOD)) % MOD;
-            i--;
+            // Update the score by raising the element to the power of operations
+            score = (score * power(num, operations)) % MOD;
+
+            // Reduce the remaining operations count
+            k -= operations;
         }
 
-        return (int) product;
+        return (int) score;
     }
 
     // Helper function to compute the power of a number modulo MOD
-    private long power(long base, long exponent, int MOD) {
+    private long power(long base, long exponent) {
         long res = 1;
 
         // Calculate the exponentiation using binary exponentiation
