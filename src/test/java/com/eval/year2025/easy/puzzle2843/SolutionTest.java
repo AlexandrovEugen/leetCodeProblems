@@ -1,4 +1,4 @@
-package com.eval.year2025.easy.pazzle2843;
+package com.eval.year2025.easy.puzzle2843;
 
 
 import org.junit.jupiter.api.Test;
