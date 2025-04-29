@@ -34,6 +34,17 @@ class SolutionTest {
 
     @Test
     void example3(){
+        String s = "aaacbbbaabab";
+        int k = 1;
+
+        int res = solution.longestRepeatingCharacterReplacement(s, k);
+
+
+        assertThat(res).isEqualTo(4);
+    }
+
+    @Test
+    void example4(){
         String s = "dippitydip";
         int k = 4;
 
@@ -44,7 +55,7 @@ class SolutionTest {
     }
 
     @Test
-    void example4(){
+    void example5(){
         String s = "coollooc";
         int k = 2;
 
@@ -52,6 +63,17 @@ class SolutionTest {
 
 
         assertThat(res).isEqualTo(6);
+    }
+
+    @Test
+    void example6(){
+        String s = "aaaaaaaaaa";
+        int k = 2;
+
+        int res = solution.longestRepeatingCharacterReplacement(s, k);
+
+
+        assertThat(res).isEqualTo(s.length());
     }
 
 }
