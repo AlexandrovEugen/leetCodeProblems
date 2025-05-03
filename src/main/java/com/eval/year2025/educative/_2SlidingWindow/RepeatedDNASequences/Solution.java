@@ -19,42 +19,45 @@ class Solution {
 
 
     public List<String> findRepeatedDnaSequences(String s) {
-//        int cap = 'A' - '0';
-        List<Integer> codes = new ArrayList<>();
-        for (char c : s.toCharArray()) {
-            codes.add((c - '0'));
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('A', 0);
+        map.put('C', 1);
+        map.put('T', 2);
+        map.put('G', 3);
+
+        final List<Integer> codes = new ArrayList<>();
+
+        for(char c: s.toCharArray()){
+            codes.add(map.get(c));
         }
 
         int k = 10;
 
-        if (k > s.length()) return new ArrayList<>();
+        if(k > codes.size()) return new ArrayList<>();
 
-        int a = 4;
         int h = 0;
+        int a = 4;
         int ak = 1;
 
-        for (int i = 0; i < k; i++) {
+        for(int i = 0; i < k; i++){
             h = h * a + codes.get(i);
             ak *= a;
         }
 
-
-        final Set<String> output = new HashSet<>();
-        final Set<Integer> seenHash = new HashSet<>();
+        Set<Integer> seenHash = new HashSet<>();
+        Set<String> output = new HashSet<>();
 
         seenHash.add(h);
 
-        for (int l = 1; l <= codes.size() - k; l++) {
-
+        for(int l = 1; l <= codes.size() - k; l++){
             h = h * a - codes.get(l - 1) * ak + codes.get(l + k - 1);
 
-            if (seenHash.contains(h)) {
+            if(seenHash.contains(h)){
                 output.add(s.substring(l, l + k));
-            } else {
+            }else {
                 seenHash.add(h);
             }
         }
-
 
         return new ArrayList<>(output);
     }
